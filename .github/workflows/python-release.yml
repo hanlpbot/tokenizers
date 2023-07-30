@@ -26,14 +26,3 @@ jobs:
       - name: Build and audit wheels
         working-directory: ./bindings/python
         run: sh build-wheels.sh
-
-      - name: Upload via FTP
-        working-directory: ./bindings/python
-        uses: airvzxf/ftp-deployment-action@latest
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          user: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local_dir: "./dist"
-          remote_dir: "bin"
-          delete: "false"
